@@ -1,0 +1,19 @@
+.container {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  h2 {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+  }
+  
+  .square {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    margin-left: 8px;
+    vertical-align: middle;
+  }

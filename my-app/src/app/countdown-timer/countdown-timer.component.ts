@@ -12,6 +12,7 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
   secondsInput: number = 0;
   minutes: number = 0;
   seconds: number = 0;
+  squareColor = "green";
 
   constructor() { }
 
@@ -26,18 +27,18 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
 
   startTimer() {
     if (this.minutes === this.minutesInput && this.seconds === this.secondsInput) {
+      this.squareColor = "green";
     this.intervalId = setInterval(() => {
-      if (this.seconds === 0) {
-        if (this.minutes === 0) {
+      if (this.seconds ===0) {
+        this.minutes--;
+        this.seconds = 59;
+      } else {
+        this.seconds --;
+        if (this.minutes === 0 && this.seconds === 0) {
           clearInterval(this.intervalId);
           this.timerFinished.emit();
           this.startOverTimer();
-        } else {
-          this.minutes--;
-          this.seconds = 59;
         }
-      } else {
-        this.seconds--;
       }
     }, 1000);
   }
@@ -51,6 +52,7 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
   }
 
   startOverTimer() {
+    this.squareColor = "red";
     this.intervalId = setInterval(() => {
       if (this.seconds === 59) {
         this.minutes++;
