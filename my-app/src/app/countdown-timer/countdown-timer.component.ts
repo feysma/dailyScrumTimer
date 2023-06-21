@@ -6,7 +6,7 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angula
   styleUrls: ['./countdown-timer.component.css']
 })
 export class CountdownTimerComponent implements OnInit, OnDestroy {
-  @Input() minutesInput: number = 2;
+  @Input() minutesInput: number = 1;
   @Output() timerFinished = new EventEmitter<void>();
   intervalId: any;
   secondsInput: number = 0;
@@ -16,12 +16,17 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
   private readonly squareSizeDefault: number = 50;
   squareSize: number = this.squareSizeDefault;
 
+  displayGif: boolean = true;
+  gifFiles: string[] = ['stop-now', 'giphy', 'giphy1', 'giphy2', '200w', 'We3p', 'stop-the-count-donald-trump'];
+  currentGifIndex = 0;
+
   constructor() {
   }
 
   ngOnInit() {
     this.minutes = this.minutesInput;
     this.seconds = this.secondsInput;
+    this.startRotation();
   }
 
   ngOnDestroy() {
@@ -54,6 +59,25 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
     this.squareSize = this.squareSizeDefault;
     this.startTimer();
   }
+
+  // Component code
+  rotateGif() {
+    this.currentGifIndex++;
+    if (this.currentGifIndex >= this.gifFiles.length) {
+      this.currentGifIndex = 0;
+    }
+  }
+
+  // Component code
+  startRotation() {
+    setInterval(() => {
+      this.displayGif = !this.displayGif;
+      if (this.displayGif) {
+        this.rotateGif();
+      }
+    }, 5000); // Rotate every 5 seconds
+  }
+
 
   startOverTimer() {
     this.squareColor = "red";

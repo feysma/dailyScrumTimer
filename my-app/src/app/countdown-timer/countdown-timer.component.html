@@ -1,7 +1,16 @@
 <div class="container">
   <h2 style="text-align:center">{{ minutes | number: '2.0' }}:{{ seconds | number: '2.0' }}</h2>
 
-  <div class="square" [style.backgroundColor]="squareColor" [ngStyle]="{'width.px': squareSize, 'height.px': squareSize}"></div>
+  <!-- ... Existing code ... -->
+
+  <div class="square" [style.backgroundColor]="squareColor" [ngStyle]="{'width.px': squareSize, 'height.px': squareSize}">
+    <ng-container *ngIf="squareColor === 'red' && displayGif">
+      <img [src]="'/assets/timegifs/' + gifFiles[currentGifIndex] + '.gif'" alt="GIF" class="square-gif">
+    </ng-container>
+  </div>
+
+  <!-- ... Existing code ... -->
+
 
 </div>
 <div fxLayout="row">
