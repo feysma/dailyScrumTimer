@@ -1,9 +1,11 @@
 <div class="container">
-        <h2 style="text-align:center">{{ minutes }}:{{ seconds }}</h2>
-        <div class="square" [style.backgroundColor]="squareColor"></div>
+  <h2 style="text-align:center">{{ minutes | number: '2.0' }}:{{ seconds | number: '2.0' }}</h2>
+
+  <div class="square" [style.backgroundColor]="squareColor" [ngStyle]="{'width.px': squareSize, 'height.px': squareSize}"></div>
+
 </div>
 <div fxLayout="row">
-    <button mat-raised-button color="primary" (click)="startTimer()">Start</button>
-    <button mat-raised-button color="warn" (click)="resetTimer()">Next speaker</button>
+  <button mat-raised-button color="primary" (click)="startTimer()">Start</button>
+  <button mat-raised-button color="warn" (click)="resetTimer()">Next speaker</button>
 </div>
 <!--<h1>Vahid's AI in the pipe !</h1>-->

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-countdown-timer',
@@ -13,8 +13,11 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
   minutes: number = 0;
   seconds: number = 0;
   squareColor = "green";
+  private readonly squareSizeDefault: number = 50;
+  squareSize: number = this.squareSizeDefault;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.minutes = this.minutesInput;
@@ -28,32 +31,34 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
   startTimer() {
     if (this.minutes === this.minutesInput && this.seconds === this.secondsInput) {
       this.squareColor = "green";
-    this.intervalId = setInterval(() => {
-      if (this.seconds ===0) {
-        this.minutes--;
-        this.seconds = 59;
-      } else {
-        this.seconds --;
-        if (this.minutes === 0 && this.seconds === 0) {
-          clearInterval(this.intervalId);
-          this.timerFinished.emit();
-          this.startOverTimer();
+      this.intervalId = setInterval(() => {
+        if (this.seconds === 0) {
+          this.minutes--;
+          this.seconds = 59;
+        } else {
+          this.seconds--;
+          if (this.minutes === 0 && this.seconds === 0) {
+            clearInterval(this.intervalId);
+            this.timerFinished.emit();
+            this.startOverTimer();
+          }
         }
-      }
-    }, 1000);
+      }, 1000);
+    }
   }
-}
 
   resetTimer() {
     clearInterval(this.intervalId);
     this.minutes = this.minutesInput;
     this.seconds = this.secondsInput;
+    this.squareSize = this.squareSizeDefault;
     this.startTimer();
   }
 
   startOverTimer() {
     this.squareColor = "red";
     this.intervalId = setInterval(() => {
+      this.squareSize += 5;
       if (this.seconds === 59) {
         this.minutes++;
         this.seconds = 0;

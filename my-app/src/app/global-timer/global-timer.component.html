@@ -1,4 +1,4 @@
-<h2 style="text-align:center">{{ minutes }}:{{ seconds }}</h2>
+<h2 style="text-align:center">{{ minutes | number: '2.0' }}:{{ seconds | number: '2.0' }}</h2>
 <div>
     <button mat-raised-button color="primary" (click)="startTimer()">Start meeting</button>
     <button mat-raised-button color="warn" (click)="stopTimer()">Stop meeting</button>
