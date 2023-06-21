@@ -3,18 +3,14 @@
 
   <!-- ... Existing code ... -->
 
-  <div class="square" [style.backgroundColor]="squareColor" [ngStyle]="{'width.px': squareSize, 'height.px': squareSize}">
+  <button class="square" (click)="resetTimer()" [style.backgroundColor]="squareColor" [ngStyle]="{'width.px': squareSize, 'height.px': squareSize}">
     <ng-container *ngIf="squareColor === 'red' && displayGif">
       <img [src]="'/assets/timegifs/' + gifFiles[currentGifIndex] + '.gif'" alt="GIF" class="square-gif">
     </ng-container>
-  </div>
+  </button>
 
   <!-- ... Existing code ... -->
 
 
-</div>
-<div fxLayout="row">
-  <button mat-raised-button color="primary" (click)="startTimer()">Start</button>
-  <button mat-raised-button color="warn" (click)="resetTimer()">Next speaker</button>
 </div>
 <!--<h1>Vahid's AI in the pipe !</h1>-->
