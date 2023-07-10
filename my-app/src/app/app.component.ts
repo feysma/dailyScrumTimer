@@ -11,5 +11,11 @@ export class AppComponent {
     const audioPlayer = this.audioPlayerRef.nativeElement as HTMLAudioElement;
     audioPlayer.play();
   }
+
+  @ViewChild('bigAudioPlayer') bigAudioPlayerRef!: ElementRef;
+  playNukeSound() {
+    const audioPlayer = this.bigAudioPlayerRef.nativeElement as HTMLAudioElement;
+    audioPlayer.play();
+  }
   
 }

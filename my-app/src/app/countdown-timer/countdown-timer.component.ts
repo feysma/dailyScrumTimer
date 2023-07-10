@@ -6,18 +6,20 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angula
   styleUrls: ['./countdown-timer.component.css']
 })
 export class CountdownTimerComponent implements OnInit, OnDestroy {
-  @Input() minutesInput: number = 1;
+  @Input() minutesInput: number = 2;
   @Output() timerFinished = new EventEmitter<void>();
+  @Output() timerNuke = new EventEmitter<void>();
   intervalId: any;
   secondsInput: number = 0;
   minutes: number = 0;
   seconds: number = 0;
   squareColor = "green";
+  bigOverTime=false;
   private readonly squareSizeDefault: number = 50;
   squareSize: number = this.squareSizeDefault;
 
   displayGif: boolean = true;
-  gifFiles: string[] = ['stop-now', 'giphy', 'giphy1', 'giphy2', '200w', 'We3p', 'stop-the-count-donald-trump'];
+  gifFiles: string[] = ['stop-now', 'giphy', 'giphy1', 'giphy2', '200w', 'We3p', 'stop-the-count-donald-trump', 'europa-bell', 'sabliertimeisup', 'yeteetime'];
   currentGifIndex = 0;
 
   constructor() {
@@ -86,9 +88,22 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
       if (this.seconds === 59) {
         this.minutes++;
         this.seconds = 0;
+        this.bigOverTimeLaunch();
       } else {
         this.seconds++;
       }
     }, 1000);
+  }
+
+  bigOverTimeLaunch() {
+    const initialSquareSize = this.squareSize;
+    this.squareSize = 350;
+    this.bigOverTime = true;
+    this.timerNuke.emit();
+    const bigOverTimeId = setInterval(() => {
+      this.bigOverTime = false;
+      this.squareSize = initialSquareSize;
+      clearInterval(bigOverTimeId);
+    }, 5000);
   }
 }
