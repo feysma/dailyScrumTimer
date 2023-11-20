@@ -7,7 +7,7 @@
     <ng-container *ngIf="squareColor === 'red' && displayGif && !bigOverTime">
       <img [src]="'assets/timegifs/' + gifFiles[currentGifIndex] + '.gif'" alt="GIF" class="square-gif">
     </ng-container>
-    <ng-container *ngIf="true">
+    <ng-container *ngIf="bigOverTime">
       <img src="assets/stopnowgifandsound/nuke.gif" alt="GIF" class="square-gif">
     </ng-container>
   </button>
