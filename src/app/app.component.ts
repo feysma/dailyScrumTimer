@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -17,5 +17,5 @@ export class AppComponent {
     const audioPlayer = this.bigAudioPlayerRef.nativeElement as HTMLAudioElement;
     audioPlayer.play();
   }
-  
+
 }

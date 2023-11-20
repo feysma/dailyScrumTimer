@@ -22,9 +22,6 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
   gifFiles: string[] = ['cezary2', 'stop-now', 'giphy', 'giphy1', 'giphy2', '200w', 'We3p', 'cezary', 'stop-the-count-donald-trump', 'europa-bell', 'sabliertimeisup', 'yeteetime'];
   currentGifIndex = 0;
 
-  constructor() {
-  }
-
   ngOnInit() {
     this.minutes = this.minutesInput;
     this.seconds = this.secondsInput;

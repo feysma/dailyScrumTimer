@@ -1,20 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'app-global-timer',
   templateUrl: './global-timer.component.html',
   styleUrls: ['./global-timer.component.css']
 })
-export class GlobalTimerComponent implements OnInit, OnDestroy{
+export class GlobalTimerComponent implements OnDestroy{
   intervalId: any;
   minutes: number = 0;
   seconds: number = 0;
-
-  constructor() { }
-
-  ngOnInit() {
-    
-  }
 
   ngOnDestroy() {
     clearInterval(this.intervalId);
@@ -31,7 +25,7 @@ export class GlobalTimerComponent implements OnInit, OnDestroy{
         }
       }, 1000);
     }
-    
+
   }
 
   stopTimer() {

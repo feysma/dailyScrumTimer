@@ -5,10 +5,10 @@
 
   <button class="square" (click)="resetTimer()" [style.backgroundColor]="squareColor" [ngStyle]="{'width.px': squareSize, 'height.px': squareSize}">
     <ng-container *ngIf="squareColor === 'red' && displayGif && !bigOverTime">
-      <img [src]="'/assets/timegifs/' + gifFiles[currentGifIndex] + '.gif'" alt="GIF" class="square-gif">
+      <img [src]="'assets/timegifs/' + gifFiles[currentGifIndex] + '.gif'" alt="GIF" class="square-gif">
     </ng-container>
-    <ng-container *ngIf="bigOverTime">
-      <img [src]="'/assets/stopnowgifandsound/nuke.gif'" alt="GIF" class="square-gif">
+    <ng-container *ngIf="true">
+      <img src="assets/stopnowgifandsound/nuke.gif" alt="GIF" class="square-gif">
     </ng-container>
   </button>
 
@@ -16,4 +16,3 @@
 
 
 </div>
-<!--<h1>Vahid's AI in the pipe !</h1>-->
